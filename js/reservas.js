@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Módulo de reservas: catálogo, creación y gestión de estados
+=======
+// Lógica de reservas remota
+>>>>>>> sync-conflicto
 window.CIIT = window.CIIT || {};
 
 (function(exports) {

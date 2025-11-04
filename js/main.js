@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Módulo principal del CIIT: gestión de almacenamiento, sesión y utilidades globales
+=======
+// Entrada principal alternativa
+>>>>>>> sync-conflicto
 window.CIIT = window.CIIT || {};
 
 (function(exports) {

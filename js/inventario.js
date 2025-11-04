@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Módulo de inventario: listado, filtros y mantenimiento de artículos
+=======
+// Versión remota inventario
+>>>>>>> sync-conflicto
 window.CIIT = window.CIIT || {};
 
 (function(exports) {

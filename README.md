@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Proyecto CIIT
+=======
+# Proyecto CIIT (version remota)
+>>>>>>> origin/main
 
 Plataforma web académica para el Centro de Innovación e Integración Tecnológica (CIIT) de Duoc UC. Permite gestionar inventario, reservas de artículos y espacios, y la administración de usuarios con persistencia local mediante `localStorage`.
 

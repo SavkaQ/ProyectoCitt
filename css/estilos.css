@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+:root {
+=======
+:root {
+  --color-primario: #002b5b;
+  --color-secundario: #ffd700;
+  --color-fondo: #f8fafc;
+  --color-texto: #121826;
+  --color-claro: #ffffff;
+  --color-resaltado: #dbeafe;
+  --color-disponible: #27ae60;
+  --color-prestado: #f39c12;
+  --color-danado: #c0392b;
+  --color-nuevo: #bdc3c7;
+  --sombra-suave: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+>>>>>>> feature/remota
 :root {
   --color-primario: #003f7d;
   --color-secundario: #ffcc00;

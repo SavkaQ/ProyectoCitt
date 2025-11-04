@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de administración · CIIT</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body data-requiere="administrador">
+  <header class="barra-superior">
+    <div class="logo">
+      <span class="logo-simbolo">CIIT · Duoc UC</span>
+      <span class="logo-texto">Panel del administrador</span>
+    </div>
+    <nav class="menu-principal">
+      <a href="./home.html">Inicio</a>
+      <a href="./inventario.html">Inventario</a>
+      <a href="./reservas.html">Reservas</a>
+      <a href="./coordinador.html" data-requiere="coordinador,administrador">Coordinador</a>
+      <a href="./admin.html" class="activo" data-requiere="administrador">Administrador</a>
+    </nav>
+    <div class="acciones-header">
+      <span class="usuario-activo"></span>
+      <span id="contadorNotificaciones" class="badge badge-notificaciones oculto">0</span>
+      <label class="interruptor-tema" title="Cambiar tema">
+        <input type="checkbox" id="interruptorTema">
+        <span class="slider"></span>
+      </label>
+      <a href="#" id="btnSalir" class="btn-secundario">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <main class="contenido-principal">
+    <section class="bienvenida">
+      <h1>Gestión integral del CIIT</h1>
+      <p>Administra usuarios, revisa el inventario global y controla las reservas activas del sistema.</p>
+      <div class="paneles">
+        <article class="panel">
+          <h3>Estado de reservas</h3>
+          <div id="resumenReservas"></div>
+        </article>
+        <article class="panel">
+          <h3>Estado de inventario</h3>
+          <div id="resumenInventario"></div>
+        </article>
+        <article class="panel">
+          <div class="flex flex-entre">
+            <h3>Notificaciones</h3>
+            <button type="button" id="btnMarcarNotificaciones" class="btn-secundario btn-pequeno">Marcar todas como leídas</button>
+          </div>
+          <ul id="listaNotificaciones" class="lista-notificaciones">
+            <li class="texto-secundario">Sin notificaciones registradas.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Usuarios registrados</h2>
+      <div class="tarjeta-info">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>RUT</th>
+              <th>Rol</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoUsuarios">
+            <tr><td colspan="5">Sin usuarios registrados.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="formulario">
+      <h2>Crear o editar usuario</h2>
+      <p class="small">Utiliza este formulario para administrar cuentas de estudiantes, coordinadores o administradores.</p>
+      <form id="formGestionUsuario" class="formulario-rapido">
+        <input type="hidden" name="id">
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="nombreUsuario">Nombre completo</label>
+            <input type="text" id="nombreUsuario" name="nombre" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="correoUsuario">Correo</label>
+            <input type="email" id="correoUsuario" name="correo" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="rutUsuario">RUT</label>
+            <input type="text" id="rutUsuario" name="rut" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="rolUsuario">Rol</label>
+            <select id="rolUsuario" name="rol" required>
+              <option value="estudiante">Estudiante</option>
+              <option value="coordinador">Coordinador</option>
+              <option value="administrador">Administrador</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label for="contrasenaUsuario">Contraseña (dejar en blanco para mantener)</label>
+          <input type="password" id="contrasenaUsuario" name="contrasena" placeholder="Contraseña segura">
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Guardar usuario</button>
+          <button type="reset" class="btn-secundario">Limpiar</button>
+        </div>
+        <div class="mensaje-form"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/permisos.js" defer></script>
+  <script src="../js/notificaciones.js" defer></script>
+  <script src="../js/inventario.js" defer></script>
+  <script src="../js/reservas.js" defer></script>
+  <script src="../js/usuarios.js" defer></script>
+</body>
+</html>

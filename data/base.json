@@ -1,0 +1,123 @@
+{
+  "usuarios": [
+    {
+      "id": "admin-1",
+      "nombre": "Ana Pérez",
+      "correo": "ana.perez@duocuc.cl",
+      "rut": "11.111.111-1",
+      "rol": "administrador",
+      "contrasena": "Admin1234"
+    },
+    {
+      "id": "coord-1",
+      "nombre": "Bruno Silva",
+      "correo": "bruno.silva@duocuc.cl",
+      "rut": "22.222.222-2",
+      "rol": "coordinador",
+      "contrasena": "Coord1234"
+    },
+    {
+      "id": "user-1",
+      "nombre": "Carla Díaz",
+      "correo": "carla.diaz@duocuc.cl",
+      "rut": "18.765.432-1",
+      "rol": "estudiante",
+      "contrasena": "Carla1234"
+    }
+  ],
+  "inventario": [
+    {
+      "id": "art-1",
+      "nombre": "Cámara DSLR",
+      "categoria": "Audiovisual",
+      "estado": "disponible",
+      "stock": 5,
+      "descripcion": "Canon EOS con lente 18-55mm"
+    },
+    {
+      "id": "art-2",
+      "nombre": "Notebook HP",
+      "categoria": "Computación",
+      "estado": "prestado",
+      "stock": 10,
+      "descripcion": "Equipo i5 8GB RAM"
+    },
+    {
+      "id": "art-3",
+      "nombre": "Proyector Epson",
+      "categoria": "Audiovisual",
+      "estado": "danado",
+      "stock": 2,
+      "descripcion": "Requiere mantención"
+    },
+    {
+      "id": "art-4",
+      "nombre": "Micrófono Inalámbrico",
+      "categoria": "Audio",
+      "estado": "nuevo",
+      "stock": 6,
+      "descripcion": "Kit doble canal"
+    }
+  ],
+  "espacios": [
+    {
+      "id": "esp-1",
+      "nombre": "Sala Audiovisual 101",
+      "capacidad": 25,
+      "estado": "disponible",
+      "recursos": ["Proyector", "Sistema de sonido", "Pizarras"]
+    },
+    {
+      "id": "esp-2",
+      "nombre": "Laboratorio MAC",
+      "capacidad": 18,
+      "estado": "prestado",
+      "recursos": ["iMac", "Adobe Suite", "Impresora"]
+    },
+    {
+      "id": "esp-3",
+      "nombre": "Sala Innovación",
+      "capacidad": 30,
+      "estado": "nuevo",
+      "recursos": ["Pantallas táctiles", "Mobiliario modular"]
+    }
+  ],
+  "reservas": [
+    {
+      "id": "res-1",
+      "usuarioId": "user-1",
+      "tipo": "articulo",
+      "referenciaId": "art-1",
+      "nombre": "Cámara DSLR",
+      "solicitante": "Carla Díaz",
+      "rut": "18.765.432-1",
+      "fecha": "2024-04-02",
+      "estado": "aprobada"
+    },
+    {
+      "id": "res-2",
+      "usuarioId": "coord-1",
+      "tipo": "espacio",
+      "referenciaId": "esp-2",
+      "nombre": "Laboratorio MAC",
+      "solicitante": "Bruno Silva",
+      "rut": "22.222.222-2",
+      "fecha": "2024-04-03",
+      "estado": "pendiente"
+    }
+  ],
+  "notificaciones": [
+    {
+      "id": "not-1",
+      "tipo": "confirmacion",
+      "titulo": "Reserva aprobada",
+      "descripcion": "La reserva de Cámara DSLR fue aprobada. Retira el equipo en coordinación con el laboratorio.",
+      "fecha": "2024-04-04T08:00:00.000Z",
+      "destinatarios": { "global": false, "roles": [], "usuarios": ["user-1"] },
+      "referencia": { "tipo": "reserva", "id": "res-1" },
+      "importancia": "media",
+      "leidoPor": [],
+      "archivada": false
+    }
+  ]
+}

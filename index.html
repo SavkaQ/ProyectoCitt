@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema CITT - Gestión Integral</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <img src="assets/img/citt-logo.svg" alt="Logo CITT" class="logo" />
+            <div>
+                <h1>CITT Gestión Integral</h1>
+                <p>Centro de Innovación y Transferencia Tecnológica</p>
+            </div>
+        </div>
+        <nav class="topbar__nav" aria-label="Navegación principal">
+            <a href="#home">Inicio</a>
+            <a href="#info">Información</a>
+            <a href="#auth">Acceso</a>
+            <a href="#dashboard" class="requires-auth" hidden>Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section hero">
+            <div class="hero__content">
+                <h2>Gestiona tus reservas e inventario del CITT con seguridad</h2>
+                <p>
+                    Plataforma integral para alumnos, docentes, ayudantes y coordinadores. Gestiona espacios, inventario y notificaciones con trazabilidad completa.
+                </p>
+                <button class="btn btn--primary" data-action="scroll" data-target="#auth">Comenzar</button>
+            </div>
+            <div class="hero__graphic" role="presentation">
+                <div class="hero__shield">
+                    <span class="material-icon">shield</span>
+                    <p>Seguridad aplicada</p>
+                </div>
+                <ul class="hero__checks">
+                    <li>Validación institucional</li>
+                    <li>Control de roles</li>
+                    <li>Auditoría completa</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="info" class="section info">
+            <h2>Información del CITT</h2>
+            <div class="info__grid">
+                <article>
+                    <h3>Objetivos</h3>
+                    <p>Fomentar la innovación tecnológica, apoyar proyectos académicos y brindar acceso a equipamiento especializado.</p>
+                </article>
+                <article>
+                    <h3>Normas</h3>
+                    <ul>
+                        <li>Uso responsable de espacios y materiales.</li>
+                        <li>Respeto por los horarios aprobados.</li>
+                        <li>Devolución de artículos en buen estado.</li>
+                        <li>Identificación mediante credencial vigente.</li>
+                    </ul>
+                </article>
+                <article>
+                    <h3>Horarios</h3>
+                    <p>Lunes a viernes de 08:30 a 21:30 hrs.<br />Sábado de 09:00 a 14:00 hrs.</p>
+                </article>
+                <article>
+                    <h3>Contacto</h3>
+                    <p>Email: <a href="mailto:citt@duocuc.cl">citt@duocuc.cl</a><br />Teléfono: +56 2 1234 5678</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="auth" class="section auth">
+            <h2>Acceso Seguro</h2>
+            <div class="auth__wrapper">
+                <div class="card" aria-labelledby="loginTitle">
+                    <h3 id="loginTitle">Ingreso</h3>
+                    <form id="loginForm" novalidate>
+                        <label for="loginEmail">Correo institucional</label>
+                        <input type="email" id="loginEmail" name="loginEmail" placeholder="usuario@duocuc.cl" required />
+
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" name="loginPassword" required minlength="8" />
+
+                        <label for="loginRole">Rol</label>
+                        <select id="loginRole" name="loginRole" required>
+                            <option value="">Seleccionar rol</option>
+                            <option value="alumno">Alumno</option>
+                            <option value="ayudante">Ayudante / Docente</option>
+                            <option value="coordinador">Coordinador / Director</option>
+                        </select>
+
+                        <button type="submit" class="btn btn--primary">Ingresar</button>
+                        <p class="form__helper"><a href="#" id="recoverPassword">¿Olvidaste tu contraseña?</a></p>
+                        <p class="form__feedback" id="loginFeedback" role="alert" aria-live="polite"></p>
+                    </form>
+                </div>
+
+                <div class="card" aria-labelledby="registerTitle">
+                    <h3 id="registerTitle">Registro</h3>
+                    <form id="registerForm" novalidate>
+                        <label for="registerName">Nombre completo</label>
+                        <input type="text" id="registerName" name="registerName" required />
+
+                        <label for="registerEmail">Correo institucional</label>
+                        <input type="email" id="registerEmail" name="registerEmail" placeholder="usuario@duocuc.cl" required />
+
+                        <label for="registerMatricula">Matrícula</label>
+                        <input type="text" id="registerMatricula" name="registerMatricula" required minlength="8" maxlength="12" />
+
+                        <label for="registerRole">Rol</label>
+                        <select id="registerRole" name="registerRole" required>
+                            <option value="">Seleccionar rol</option>
+                            <option value="alumno">Alumno</option>
+                            <option value="ayudante">Ayudante / Docente</option>
+                            <option value="coordinador">Coordinador / Director</option>
+                        </select>
+
+                        <label for="registerPassword">Contraseña</label>
+                        <input type="password" id="registerPassword" name="registerPassword" required minlength="8" />
+
+                        <button type="submit" class="btn btn--outline">Crear cuenta</button>
+                        <p class="form__feedback" id="registerFeedback" role="alert" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="section dashboard" hidden>
+            <h2>Panel principal</h2>
+            <div class="dashboard__header">
+                <div>
+                    <p id="userGreeting"></p>
+                    <p id="userRole"></p>
+                </div>
+                <div class="dashboard__actions">
+                    <button class="btn btn--ghost" id="openProfile">Perfil</button>
+                    <button class="btn btn--danger" id="logoutBtn">Cerrar sesión</button>
+                </div>
+            </div>
+
+            <div class="tabs" role="tablist">
+                <button class="tab" data-tab="alumno" role="tab" aria-controls="tab-alumno" aria-selected="false">Alumno</button>
+                <button class="tab" data-tab="ayudante" role="tab" aria-controls="tab-ayudante" aria-selected="false">Ayudante / Docente</button>
+                <button class="tab" data-tab="coordinador" role="tab" aria-controls="tab-coordinador" aria-selected="false">Coordinador / Director</button>
+            </div>
+
+            <div class="tab__panels">
+                <section id="tab-alumno" class="tab__panel" role="tabpanel" hidden>
+                    <h3>Servicios para alumnos</h3>
+                    <div class="panel__grid">
+                        <article class="panel__card">
+                            <h4>Disponibilidad y Calendario</h4>
+                            <label for="calendarView">Vista</label>
+                            <select id="calendarView">
+                                <option value="semana">Semana</option>
+                                <option value="dia">Día</option>
+                                <option value="mes">Mes</option>
+                            </select>
+                            <div class="calendar" id="studentCalendar"></div>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Crear reserva</h4>
+                            <form id="studentReservationForm">
+                                <label for="reservationSpace">Tipo de espacio</label>
+                                <select id="reservationSpace" required>
+                                    <option value="">Seleccione</option>
+                                    <option value="laboratorio">Laboratorio</option>
+                                    <option value="sala">Sala de reuniones</option>
+                                    <option value="taller">Taller especializado</option>
+                                </select>
+                                <label for="reservationDate">Fecha</label>
+                                <input type="date" id="reservationDate" required />
+                                <label for="reservationTime">Hora</label>
+                                <input type="time" id="reservationTime" required />
+                                <label for="reservationExclusive">Reserva exclusiva CITT</label>
+                                <input type="checkbox" id="reservationExclusive" />
+                                <label for="reservationQr">Credencial escaneada</label>
+                                <div class="form__qr">
+                                    <input type="text" id="reservationQr" placeholder="Pendiente de escaneo" readonly />
+                                    <button type="button" class="btn btn--ghost" id="simulateQrScan">Escanear QR</button>
+                                </div>
+                                <button type="submit" class="btn btn--primary">Enviar solicitud</button>
+                                <p class="form__feedback" id="reservationFeedback" role="alert" aria-live="polite"></p>
+                            </form>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Inventario</h4>
+                            <input type="search" id="inventorySearch" placeholder="Buscar artículos" aria-label="Buscar en inventario" />
+                            <div class="inventory__filters">
+                                <label for="inventoryCategory">Categoría</label>
+                                <select id="inventoryCategory">
+                                    <option value="">Todas</option>
+                                </select>
+                            </div>
+                            <ul class="inventory__list" id="inventoryList"></ul>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Solicitar artículos</h4>
+                            <form id="loanRequestForm">
+                                <label for="loanItem">Artículo</label>
+                                <input type="text" id="loanItem" required />
+                                <label for="loanQuantity">Cantidad</label>
+                                <input type="number" id="loanQuantity" min="1" required />
+                                <button type="submit" class="btn btn--primary">Solicitar</button>
+                                <p class="form__feedback" id="loanFeedback" role="alert" aria-live="polite"></p>
+                            </form>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Registrar devolución</h4>
+                            <form id="returnForm">
+                                <label for="returnCode">Código de préstamo</label>
+                                <input type="text" id="returnCode" required />
+                                <button type="submit" class="btn btn--outline">Registrar devolución</button>
+                                <p class="form__feedback" id="returnFeedback" role="alert" aria-live="polite"></p>
+                            </form>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Historial personal</h4>
+                            <ul id="studentHistory" class="history__list"></ul>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Notificaciones</h4>
+                            <ul id="studentNotifications" class="history__list"></ul>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="tab-ayudante" class="tab__panel" role="tabpanel" hidden>
+                    <h3>Panel de Ayudantes y Docentes</h3>
+                    <div class="panel__grid">
+                        <article class="panel__card">
+                            <h4>Reservas y préstamos activos</h4>
+                            <ul id="assistantActiveReservations" class="history__list"></ul>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Inventario</h4>
+                            <ul id="assistantInventory" class="inventory__list"></ul>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Reportes de apoyo</h4>
+                            <p>Acceso de solo lectura a métricas principales y listados de material crítico.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="tab-coordinador" class="tab__panel" role="tabpanel" hidden>
+                    <h3>Panel Administrativo</h3>
+                    <div class="panel__grid">
+                        <article class="panel__card">
+                            <h4>Solicitudes de reservas</h4>
+                            <ul id="adminReservationRequests" class="history__list"></ul>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Gestión de inventario</h4>
+                            <form id="adminInventoryForm">
+                                <label for="adminItemName">Artículo</label>
+                                <input type="text" id="adminItemName" required />
+                                <label for="adminItemCategory">Categoría</label>
+                                <input type="text" id="adminItemCategory" required />
+                                <label for="adminItemStatus">Estado</label>
+                                <select id="adminItemStatus" required>
+                                    <option value="nuevo">Nuevo</option>
+                                    <option value="disponible">Disponible</option>
+                                    <option value="prestado">Prestado</option>
+                                    <option value="danado">Dañado</option>
+                                </select>
+                                <button type="button" class="btn btn--ghost" id="scanInventoryCode">Escanear código</button>
+                                <button type="submit" class="btn btn--primary">Registrar artículo</button>
+                                <p class="form__feedback" id="adminInventoryFeedback" role="alert" aria-live="polite"></p>
+                            </form>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Gestión de usuarios</h4>
+                            <ul id="adminUserList" class="history__list"></ul>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Reportes y trazabilidad</h4>
+                            <div id="adminReports" class="reports"></div>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Estadísticas</h4>
+                            <canvas id="usageChart" aria-label="Estadísticas de uso" role="img" width="360" height="220"></canvas>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Consumo de materiales</h4>
+                            <form id="consumptionForm">
+                                <label for="consumptionItem">Artículo</label>
+                                <input type="text" id="consumptionItem" required />
+                                <label for="consumptionQuantity">Cantidad utilizada</label>
+                                <input type="number" id="consumptionQuantity" min="1" required />
+                                <label for="consumptionNotes">Observaciones</label>
+                                <textarea id="consumptionNotes" rows="3" placeholder="Detalle del uso o proyecto"></textarea>
+                                <button type="submit" class="btn btn--outline">Registrar consumo</button>
+                                <p class="form__feedback" id="consumptionFeedback" role="alert" aria-live="polite"></p>
+                            </form>
+                        </article>
+                        <article class="panel__card">
+                            <h4>Notificaciones del sistema</h4>
+                            <ul id="adminNotifications" class="history__list"></ul>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="profileModal">
+        <form method="dialog" class="modal">
+            <h3>Perfil y Configuración</h3>
+            <label for="profileName">Nombre</label>
+            <input type="text" id="profileName" readonly />
+
+            <label for="profileEmail">Correo</label>
+            <input type="email" id="profileEmail" readonly />
+
+            <label for="profileRole">Rol</label>
+            <input type="text" id="profileRole" readonly />
+
+            <label for="profileNotifications">Notificaciones</label>
+            <select id="profileNotifications">
+                <option value="todas">Todas</option>
+                <option value="solo-reservas">Solo reservas</option>
+                <option value="solo-alertas">Solo alertas</option>
+                <option value="ninguna">Ninguna</option>
+            </select>
+
+            <label for="profilePassword">Cambiar contraseña</label>
+            <input type="password" id="profilePassword" minlength="8" placeholder="Nueva contraseña" />
+            <p class="form__feedback" id="profileFeedback" role="alert" aria-live="polite"></p>
+            <menu>
+                <button value="cancel" class="btn btn--ghost">Cerrar</button>
+                <button id="profileSave" value="default" class="btn btn--primary">Guardar</button>
+            </menu>
+        </form>
+    </dialog>
+
+    <dialog id="recoverModal">
+        <form method="dialog" class="modal">
+            <h3>Recuperar contraseña</h3>
+            <label for="recoverEmail">Correo institucional</label>
+            <input type="email" id="recoverEmail" required placeholder="usuario@duocuc.cl" />
+            <p class="form__feedback" id="recoverFeedback" role="alert" aria-live="polite"></p>
+            <menu>
+                <button value="cancel" class="btn btn--ghost">Cancelar</button>
+                <button id="recoverSubmit" value="default" class="btn btn--primary">Enviar enlace</button>
+            </menu>
+        </form>
+    </dialog>
+
+    <template id="inventoryItemTemplate">
+        <li class="inventory__item">
+            <div class="inventory__label"></div>
+            <span class="inventory__status"></span>
+        </li>
+    </template>
+
+    <template id="historyItemTemplate">
+        <li class="history__item">
+            <p class="history__title"></p>
+            <p class="history__meta"></p>
+        </li>
+    </template>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

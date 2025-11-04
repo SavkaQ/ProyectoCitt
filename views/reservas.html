@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservas CIIT</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body data-requiere="">
+  <header class="barra-superior">
+    <div class="logo">
+      <span class="logo-simbolo">CIIT · Duoc UC</span>
+      <span class="logo-texto">Reservas de artículos y espacios</span>
+    </div>
+    <nav class="menu-principal">
+      <a href="./home.html">Inicio</a>
+      <a href="./inventario.html">Inventario</a>
+      <a href="./reservas.html" class="activo">Reservas</a>
+      <a href="./coordinador.html" data-requiere="coordinador,administrador">Coordinador</a>
+      <a href="./admin.html" data-requiere="administrador">Administrador</a>
+    </nav>
+    <div class="acciones-header">
+      <span class="usuario-activo"></span>
+      <label class="interruptor-tema" title="Cambiar tema">
+        <input type="checkbox" id="interruptorTema">
+        <span class="slider"></span>
+      </label>
+      <a href="#" id="btnSalir" class="btn-secundario">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <main class="contenido-principal">
+    <section class="bienvenida">
+      <h1>Catálogo de recursos reservables</h1>
+      <p>Selecciona el recurso que necesitas, completa tus datos y envía la solicitud. Un coordinador confirmará tu reserva.</p>
+      <div id="resumenReservas"></div>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Artículos disponibles</h2>
+      <div id="listaArticulos" class="card-lista"></div>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Espacios académicos</h2>
+      <div id="listaEspacios" class="card-lista"></div>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Mis reservas</h2>
+      <div class="tarjeta-info">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Recurso</th>
+              <th>Tipo</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoMisReservas">
+            <tr><td colspan="4">Inicia sesión para ver tus reservas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal oculto" id="modalReserva" aria-hidden="true">
+    <div class="modal-contenido">
+      <h2 id="tituloReserva">Nueva reserva</h2>
+      <p id="detalleReservaSeleccionada" class="texto-secundario"></p>
+      <form id="formReserva" class="formulario-rapido">
+        <input type="hidden" name="tipo">
+        <input type="hidden" name="referenciaId">
+        <div class="form-grupo">
+          <label for="nombreReserva">Nombre solicitante</label>
+          <input type="text" id="nombreReserva" name="nombre" required>
+        </div>
+        <div class="form-grupo">
+          <label for="rutReserva">RUT solicitante</label>
+          <input type="text" id="rutReserva" name="rut" required>
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Enviar reserva</button>
+          <button type="button" id="cerrarModalReserva" class="btn-secundario">Cancelar</button>
+        </div>
+        <div class="mensaje-form"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/permisos.js" defer></script>
+  <script src="../js/inventario.js" defer></script>
+  <script src="../js/reservas.js" defer></script>
+  <script src="../js/usuarios.js" defer></script>
+</body>
+</html>

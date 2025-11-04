@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario CIIT</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body data-requiere="">
+  <header class="barra-superior">
+    <div class="logo">
+      <span class="logo-simbolo">CIIT · Duoc UC</span>
+      <span class="logo-texto">Gestión de inventario</span>
+    </div>
+    <nav class="menu-principal">
+      <a href="./home.html">Inicio</a>
+      <a href="./inventario.html" class="activo">Inventario</a>
+      <a href="./reservas.html">Reservas</a>
+      <a href="./coordinador.html" data-requiere="coordinador,administrador">Coordinador</a>
+      <a href="./admin.html" data-requiere="administrador">Administrador</a>
+    </nav>
+    <div class="acciones-header">
+      <span class="usuario-activo"></span>
+      <label class="interruptor-tema" title="Cambiar tema">
+        <input type="checkbox" id="interruptorTema">
+        <span class="slider"></span>
+      </label>
+      <a href="#" id="btnSalir" class="btn-secundario">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <main class="contenido-principal">
+    <section class="bienvenida">
+      <h1>Inventario de artículos CIIT</h1>
+      <p>Filtra por categoría, estado o busca por nombre para ubicar rápidamente los artículos disponibles.</p>
+      <div class="fila-formulario">
+        <div class="form-grupo-inline">
+          <label for="busquedaInventario">Buscar</label>
+          <input type="search" id="busquedaInventario" placeholder="Nombre o categoría">
+        </div>
+        <div class="form-grupo-inline">
+          <label for="filtroCategoria">Categoría</label>
+          <select id="filtroCategoria">
+            <option value="todos">Todas las categorías</option>
+          </select>
+        </div>
+        <div class="form-grupo-inline">
+          <label for="filtroEstado">Estado</label>
+          <select id="filtroEstado">
+            <option value="todos">Todos</option>
+            <option value="disponible">Disponible</option>
+            <option value="prestado">Prestado</option>
+            <option value="danado">Dañado</option>
+            <option value="nuevo">Nuevo</option>
+          </select>
+        </div>
+      </div>
+      <div id="resumenInventario"></div>
+    </section>
+
+    <section class="seccion-informacion">
+      <div class="tarjeta-info">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Estado</th>
+              <th>Stock</th>
+              <th>Descripción</th>
+              <th>Reservas</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoInventario">
+            <tr><td colspan="7">Sin artículos registrados.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="formulario" data-rol="coordinador,administrador">
+      <h2>Registrar o actualizar artículo</h2>
+      <p class="small">Disponible solo para coordinadores y administradores.</p>
+      <form id="formInventario" class="formulario-rapido">
+        <input type="hidden" name="id">
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="nombreArticulo">Nombre</label>
+            <input type="text" id="nombreArticulo" name="nombre" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="categoriaArticulo">Categoría</label>
+            <input type="text" id="categoriaArticulo" name="categoria" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="estadoArticulo">Estado</label>
+            <select id="estadoArticulo" name="estado" required>
+              <option value="disponible">Disponible</option>
+              <option value="prestado">Prestado</option>
+              <option value="danado">Dañado</option>
+              <option value="nuevo">Nuevo</option>
+            </select>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="stockArticulo">Stock</label>
+            <input type="number" id="stockArticulo" name="stock" min="0" required>
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label for="descripcionArticulo">Descripción</label>
+          <textarea id="descripcionArticulo" name="descripcion" rows="3" placeholder="Especificaciones del recurso"></textarea>
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Guardar</button>
+          <button type="reset" class="btn-secundario">Limpiar</button>
+        </div>
+        <div class="mensaje-form"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/permisos.js" defer></script>
+  <script src="../js/inventario.js" defer></script>
+  <script src="../js/reservas.js" defer></script>
+  <script src="../js/usuarios.js" defer></script>
+</body>
+</html>

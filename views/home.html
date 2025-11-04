@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel general · CIIT</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body data-requiere="">
+  <header class="barra-superior">
+    <div class="logo">
+      <span class="logo-simbolo">CIIT · Duoc UC</span>
+      <span class="logo-texto">Panel de inicio</span>
+    </div>
+    <nav class="menu-principal">
+      <a href="./home.html" class="activo">Inicio</a>
+      <a href="./inventario.html">Inventario</a>
+      <a href="./reservas.html">Reservas</a>
+      <a href="./coordinador.html" data-requiere="coordinador,administrador">Coordinador</a>
+      <a href="./admin.html" data-requiere="administrador">Administrador</a>
+    </nav>
+    <div class="acciones-header">
+      <span class="usuario-activo"></span>
+      <label class="interruptor-tema" title="Cambiar tema">
+        <input type="checkbox" id="interruptorTema">
+        <span class="slider"></span>
+      </label>
+      <a href="#" id="btnSalir" class="btn-secundario">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <main class="contenido-principal">
+    <section class="bienvenida">
+      <h1>Resumen general del CIIT</h1>
+      <p>Monitorea inventario, reservas y estado de tu cuenta en un solo lugar.</p>
+      <div id="resumenInventario"></div>
+      <div id="resumenReservas" class="estado-inventario"></div>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Mis reservas activas</h2>
+      <div class="tarjeta-info">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Recurso</th>
+              <th>Tipo</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoMisReservas">
+            <tr><td colspan="4">No tienes reservas registradas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/permisos.js" defer></script>
+  <script src="../js/inventario.js" defer></script>
+  <script src="../js/reservas.js" defer></script>
+  <script src="../js/usuarios.js" defer></script>
+</body>
+</html>

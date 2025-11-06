@@ -44,6 +44,22 @@
           <button type="submit" class="btn-primario">Iniciar sesión</button>
           <a href="./registro.html" class="btn-secundario">Crear cuenta estudiante</a>
         </div>
+        <div class="enlaces-secundarios">
+          <button type="button" id="btnRecuperar" class="btn-enlace">Olvidé mi contraseña</button>
+        </div>
+        <div class="mensaje-form"></div>
+      </form>
+      <form id="formRecuperar" class="formulario-rapido formulario-secundario oculto" aria-hidden="true">
+        <h2>Recuperar contraseña</h2>
+        <p class="texto-secundario">Ingresa tu correo institucional y te enviaremos instrucciones para restablecer tu contraseña.</p>
+        <div class="form-grupo">
+          <label for="correoRecuperacion">Correo institucional</label>
+          <input type="email" id="correoRecuperacion" name="correo" placeholder="nombre.apellido@duocuc.cl">
+        </div>
+        <div class="acciones-formulario texto-centrado">
+          <button type="submit" class="btn-primario">Enviar instrucciones</button>
+          <button type="button" id="btnCerrarRecuperacion" class="btn-secundario">Cancelar</button>
+        </div>
         <div class="mensaje-form"></div>
       </form>
     </section>

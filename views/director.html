@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel general · CIIT</title>
+  <title>Panel del director · CIIT</title>
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
-<body data-requiere="">
+<body data-requiere="director,administrador">
   <header class="barra-superior">
     <div class="logo">
       <span class="logo-simbolo">CIIT · Duoc UC</span>
-      <span class="logo-texto">Panel de inicio</span>
+      <span class="logo-texto">Supervisión de indicadores</span>
     </div>
     <nav class="menu-principal">
-      <a href="./home.html" class="activo">Inicio</a>
+      <a href="./home.html">Inicio</a>
       <a href="./inventario.html">Inventario</a>
       <a href="./reservas.html">Reservas</a>
       <a href="./configuracion.html" data-requiere="estudiante,docente,ayudante,coordinador,director,administrador">Configuración</a>
       <a href="./coordinador.html" data-requiere="coordinador,administrador">Administración</a>
-      <a href="./director.html" data-requiere="director">Director</a>
+      <a href="./director.html" class="activo" data-requiere="director">Director</a>
       <a href="./admin.html" data-requiere="administrador">Administrador</a>
     </nav>
     <div class="acciones-header">
@@ -33,16 +33,16 @@
 
   <main class="contenido-principal">
     <section class="bienvenida">
-      <h1>Resumen general del CIIT</h1>
-      <p>Monitorea inventario, reservas y estado de tu cuenta en un solo lugar.</p>
-      <div id="resumenInventario"></div>
-      <div id="resumenReservas" class="estado-inventario"></div>
+      <h1>Reporte ejecutivo del CIIT</h1>
+      <p>Consulta el resumen consolidado de uso del laboratorio, reservas aprobadas y disponibilidad de recursos.</p>
+      <div id="metricasDirector" data-metricas="director" class="grid-metricas"></div>
     </section>
 
     <section class="seccion-informacion">
-      <h2>Mis reservas activas</h2>
+      <h2>Estado de reservas</h2>
       <div class="tarjeta-info">
-        <table class="tabla">
+        <div id="resumenReservas"></div>
+        <table class="tabla" id="tablaReservasDirector" data-tabla-reservas>
           <thead>
             <tr>
               <th>Recurso</th>
@@ -51,10 +51,20 @@
               <th>Estado</th>
             </tr>
           </thead>
-          <tbody id="cuerpoMisReservas">
-            <tr><td colspan="4">No tienes reservas registradas.</td></tr>
+          <tbody>
+            <tr><td colspan="4">Sin información de reservas registrada.</td></tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Inventario más utilizado</h2>
+      <div class="tarjeta-info">
+        <p>Listado de artículos y espacios con mayor demanda según las reservas aprobadas.</p>
+        <ul class="lista-simple" id="listaTopInventario" data-top-inventario>
+          <li>No hay datos disponibles.</li>
+        </ul>
       </div>
     </section>
   </main>
@@ -62,7 +72,6 @@
   <script src="../js/validaciones.js" defer></script>
   <script src="../js/main.js" defer></script>
   <script src="../js/permisos.js" defer></script>
-  <script src="../js/inventario.js" defer></script>
   <script src="../js/reservas.js" defer></script>
   <script src="../js/usuarios.js" defer></script>
 </body>

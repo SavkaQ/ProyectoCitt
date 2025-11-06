@@ -30,7 +30,7 @@
   <main class="contenido-principal">
     <section class="formulario">
       <h1 class="texto-centrado">Crea tu cuenta de estudiante</h1>
-      <p class="texto-centrado">Completa el formulario con tus datos institucionales. La matrícula ya no es necesaria.</p>
+      <p class="texto-centrado">Completa el formulario con tus datos institucionales y confirma que tu matrícula se encuentra activa.</p>
       <form id="formRegistro" class="formulario-rapido">
         <div class="form-grupo">
           <label for="nombre">Nombre completo</label>
@@ -39,6 +39,10 @@
         <div class="form-grupo">
           <label for="correo">Correo institucional</label>
           <input type="email" id="correo" name="correo" placeholder="nombre.apellido@duocuc.cl" required>
+        </div>
+        <div class="form-grupo">
+          <label for="matricula">Número de matrícula</label>
+          <input type="text" id="matricula" name="matricula" placeholder="20241234" required>
         </div>
         <div class="form-grupo">
           <label for="rut">RUT</label>
@@ -53,6 +57,12 @@
             <label for="confirmar">Confirmar contraseña</label>
             <input type="password" id="confirmar" name="confirmar" placeholder="Repite la contraseña" required>
           </div>
+        </div>
+        <div class="form-grupo">
+          <label class="checkbox">
+            <input type="checkbox" id="matriculaActiva" name="matriculaActiva" value="si">
+            Confirmo que mi matrícula institucional está activa.
+          </label>
         </div>
         <div class="acciones-formulario texto-centrado">
           <button type="submit" class="btn-primario">Registrar cuenta</button>

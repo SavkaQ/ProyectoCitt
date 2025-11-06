@@ -562,6 +562,123 @@ input:checked + .slider:before {
   border-radius: 8px;
 }
 
+.enlaces-secundarios {
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.btn-enlace {
+  background: none;
+  border: none;
+  color: var(--color-primario);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.btn-enlace:hover {
+  color: var(--color-secundario);
+}
+
+.formulario-secundario {
+  margin-top: 2rem;
+  background-color: var(--color-claro);
+  border-radius: 16px;
+  box-shadow: var(--sombra-suave);
+  padding: 1.5rem;
+}
+
+.grid-acciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card-accion {
+  background-color: var(--color-resaltado);
+  padding: 1.4rem;
+  border-radius: 18px;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.card-accion p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.grid-metricas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.metrica {
+  background-color: var(--color-claro);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.metrica h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.metrica strong {
+  font-size: 1.5rem;
+  display: block;
+  margin-top: 0.4rem;
+}
+
+.metrica span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.lista-detalle {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+.lista-detalle dt {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.lista-detalle dd {
+  margin: 0;
+}
+
+.reportes-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 960px) {
   .barra-superior {
     flex-direction: column;

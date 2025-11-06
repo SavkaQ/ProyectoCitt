@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración de perfil · CIIT</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body data-requiere="estudiante,docente,ayudante,coordinador,administrador,director">
+  <header class="barra-superior">
+    <div class="logo">
+      <span class="logo-simbolo">CIIT · Duoc UC</span>
+      <span class="logo-texto">Configuración y perfil</span>
+    </div>
+    <nav class="menu-principal">
+      <a href="./home.html">Inicio</a>
+      <a href="./inventario.html">Inventario</a>
+      <a href="./reservas.html">Reservas</a>
+      <a href="./configuracion.html" class="activo" data-requiere="estudiante,docente,ayudante,coordinador,director,administrador">Configuración</a>
+      <a href="./coordinador.html" data-requiere="coordinador,administrador">Administración</a>
+      <a href="./director.html" data-requiere="director">Director</a>
+      <a href="./admin.html" data-requiere="administrador">Administrador</a>
+    </nav>
+    <div class="acciones-header">
+      <span class="usuario-activo"></span>
+      <label class="interruptor-tema" title="Cambiar tema">
+        <input type="checkbox" id="interruptorTema">
+        <span class="slider"></span>
+      </label>
+      <a href="#" id="btnSalir" class="btn-secundario">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <main class="contenido-principal">
+    <section class="bienvenida">
+      <h1>Preferencias del perfil</h1>
+      <p>Actualiza tus datos personales, revisa el rol asignado y administra notificaciones o contraseña desde este panel seguro.</p>
+      <div class="tarjeta-info" id="resumenPerfil">
+        <dl class="lista-detalle">
+          <div>
+            <dt>Nombre</dt>
+            <dd id="perfilNombreActual">—</dd>
+          </div>
+          <div>
+            <dt>Rol</dt>
+            <dd id="perfilRolActual">—</dd>
+          </div>
+          <div>
+            <dt>Matrícula</dt>
+            <dd id="perfilMatriculaActual">—</dd>
+          </div>
+          <div>
+            <dt>Notificaciones</dt>
+            <dd id="perfilNotificacionesActual">—</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="formulario">
+      <h2>Editar datos personales</h2>
+      <p class="small">Los cambios se sincronizan con tu cuenta y se reflejan en todo el sistema CIIT.</p>
+      <form id="formDatosPersonales" class="formulario-rapido">
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="perfilNombre">Nombre completo</label>
+            <input type="text" id="perfilNombre" name="nombre" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="perfilCorreo">Correo institucional</label>
+            <input type="email" id="perfilCorreo" name="correo" required>
+          </div>
+        </div>
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="perfilTelefono">Teléfono</label>
+            <input type="tel" id="perfilTelefono" name="telefono" placeholder="+56 9 1234 5678">
+          </div>
+          <div class="form-grupo-inline">
+            <label for="perfilMatricula">Matrícula</label>
+            <input type="text" id="perfilMatricula" name="matricula" placeholder="20241234">
+          </div>
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Guardar cambios</button>
+          <button type="reset" class="btn-secundario">Restablecer</button>
+        </div>
+        <div class="mensaje-form"></div>
+      </form>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Configuración de notificaciones</h2>
+      <div class="tarjeta-info">
+        <p>Decide si deseas recibir recordatorios de reservas pendientes o aprobadas en tu correo institucional.</p>
+        <form id="formPreferencias" class="formulario-rapido">
+          <label class="checkbox">
+            <input type="checkbox" id="preferenciaNotificaciones" name="notificaciones" value="si">
+            Activar recordatorios por correo electrónico
+          </label>
+          <div class="acciones-formulario">
+            <button type="submit" class="btn-primario">Guardar preferencia</button>
+          </div>
+          <div class="mensaje-form"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="formulario">
+      <h2>Cambiar contraseña</h2>
+      <p class="small">Utiliza una contraseña segura con al menos 8 caracteres, una mayúscula y un número.</p>
+      <form id="formCambioContrasena" class="formulario-rapido">
+        <div class="form-grupo">
+          <label for="contrasenaActual">Contraseña actual</label>
+          <input type="password" id="contrasenaActual" name="actual" placeholder="Contraseña actual" required>
+        </div>
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="nuevaContrasena">Nueva contraseña</label>
+            <input type="password" id="nuevaContrasena" name="nueva" placeholder="Nueva contraseña" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="confirmarNuevaContrasena">Confirmar contraseña</label>
+            <input type="password" id="confirmarNuevaContrasena" name="confirmar" placeholder="Repite la contraseña" required>
+          </div>
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Actualizar contraseña</button>
+        </div>
+        <div class="mensaje-form"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/permisos.js" defer></script>
+  <script src="../js/usuarios.js" defer></script>
+</body>
+</html>

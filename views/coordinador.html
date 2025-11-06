@@ -16,7 +16,9 @@
       <a href="./home.html">Inicio</a>
       <a href="./inventario.html">Inventario</a>
       <a href="./reservas.html">Reservas</a>
-      <a href="./coordinador.html" class="activo">Coordinador</a>
+      <a href="./configuracion.html" data-requiere="estudiante,docente,ayudante,coordinador,director,administrador">Configuración</a>
+      <a href="./coordinador.html" class="activo" data-requiere="coordinador,administrador">Administración</a>
+      <a href="./director.html" data-requiere="director">Director</a>
       <a href="./admin.html" data-requiere="administrador">Administrador</a>
     </nav>
     <div class="acciones-header">
@@ -31,14 +33,54 @@
 
   <main class="contenido-principal">
     <section class="bienvenida">
-      <h1>Gestión de reservas pendientes</h1>
-      <p>Revisa y responde las solicitudes de artículos y espacios. Mantén actualizado el inventario para asegurar la disponibilidad.</p>
-      <div id="resumenReservas"></div>
+      <h1>Administración integral del CIIT</h1>
+      <p>Coordina usuarios, inventario y reservas desde un único panel. Cada acción actualiza automáticamente la base de datos compartida.</p>
+      <div class="grid-acciones">
+        <article class="card-accion">
+          <h3>Gestión de usuarios</h3>
+          <p>Crear, editar o eliminar cuentas con verificación de datos institucionales.</p>
+          <a href="#gestionUsuarios" class="btn-accion btn-pequeno">Ir a gestión</a>
+        </article>
+        <article class="card-accion">
+          <h3>Asignación de roles</h3>
+          <p>Actualiza perfiles de Alumno, Ayudante, Docente, Coordinador o Director.</p>
+          <a href="#formGestionUsuario" class="btn-accion btn-pequeno">Actualizar roles</a>
+        </article>
+        <article class="card-accion">
+          <h3>Control de inventario</h3>
+          <p>Supervisa stock y estados para garantizar disponibilidad en reservas.</p>
+          <a href="./inventario.html" class="btn-enlace">Ver inventario</a>
+        </article>
+        <article class="card-accion">
+          <h3>Generación de reportes</h3>
+          <p>Descarga reportes CSV con el uso del sistema, préstamos y devoluciones.</p>
+          <a href="#reportesCoordinador" class="btn-accion btn-pequeno">Crear reportes</a>
+        </article>
+        <article class="card-accion">
+          <h3>Aprobación de reservas</h3>
+          <p>Autoriza o rechaza solicitudes pendientes en tiempo real.</p>
+          <a href="#reservasPendientes" class="btn-accion btn-pequeno">Revisar reservas</a>
+        </article>
+        <article class="card-accion">
+          <h3>Estadísticas de uso</h3>
+          <p>Visualiza métricas clave de usuarios, recursos y estados de reserva.</p>
+          <a href="#metricasCoordinador" class="btn-enlace">Ver métricas</a>
+        </article>
+      </div>
     </section>
 
     <section class="seccion-informacion">
-      <h2>Reservas por aprobar</h2>
+      <h2>Estadísticas de uso</h2>
+      <div class="tarjeta-info" id="gestionUsuarios">
+        <div id="metricasCoordinador" data-metricas="coordinador" class="grid-metricas"></div>
+      </div>
+    </section>
+
+    <section class="seccion-informacion" id="reservasPendientes">
+      <h2>Aprobación de reservas</h2>
+      <p>Gestiona solicitudes pendientes. Cada cambio notifica automáticamente al solicitante mediante el sistema.</p>
       <div class="tarjeta-info">
+        <div id="resumenReservas"></div>
         <table class="tabla">
           <thead>
             <tr>
@@ -57,10 +99,110 @@
     </section>
 
     <section class="seccion-informacion">
-      <h2>Estado del inventario</h2>
+      <h2>Control de inventario</h2>
       <div class="tarjeta-info">
-        <p>Controla el estado de los artículos y actualízalos desde la vista de inventario.</p>
+        <p>Supervisa la disponibilidad global y accede al formulario de edición para actualizar stock o estados.</p>
         <div id="resumenInventario"></div>
+        <a href="./inventario.html" class="btn-accion btn-pequeno">Gestionar inventario</a>
+      </div>
+    </section>
+
+    <section class="seccion-informacion">
+      <h2>Gestión de usuarios y roles</h2>
+      <div class="tarjeta-info">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>RUT</th>
+              <th>Rol</th>
+              <th>Matrícula</th>
+              <th>Estado matrícula</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoUsuarios">
+            <tr><td colspan="7">Sin usuarios registrados.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="formulario">
+      <h2>Crear o editar usuario</h2>
+      <p class="small">Registra cuentas institucionales y asigna roles según las necesidades del módulo.</p>
+      <form id="formGestionUsuario" class="formulario-rapido">
+        <input type="hidden" name="id">
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="nombreUsuario">Nombre completo</label>
+            <input type="text" id="nombreUsuario" name="nombre" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="correoUsuario">Correo</label>
+            <input type="email" id="correoUsuario" name="correo" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="rutUsuario">RUT</label>
+            <input type="text" id="rutUsuario" name="rut" required>
+          </div>
+          <div class="form-grupo-inline">
+            <label for="rolUsuario">Rol</label>
+            <select id="rolUsuario" name="rol" required>
+              <option value="estudiante">Estudiante</option>
+              <option value="ayudante">Ayudante</option>
+              <option value="docente">Docente</option>
+              <option value="coordinador">Coordinador</option>
+              <option value="director">Director</option>
+              <option value="administrador">Administrador</option>
+            </select>
+          </div>
+        </div>
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="matriculaUsuario">Matrícula</label>
+            <input type="text" id="matriculaUsuario" name="matricula" placeholder="20241234">
+          </div>
+          <div class="form-grupo-inline">
+            <label for="telefonoUsuario">Teléfono</label>
+            <input type="tel" id="telefonoUsuario" name="telefono" placeholder="+56 9 1234 5678">
+          </div>
+          <div class="form-grupo-inline">
+            <label class="checkbox" for="matriculaActivaUsuario">
+              <input type="checkbox" id="matriculaActivaUsuario" name="matriculaActiva" value="si">
+              Matrícula activa
+            </label>
+          </div>
+          <div class="form-grupo-inline">
+            <label class="checkbox" for="notificacionesUsuario">
+              <input type="checkbox" id="notificacionesUsuario" name="notificaciones" value="si" checked>
+              Recibir notificaciones
+            </label>
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label for="contrasenaUsuario">Contraseña (dejar en blanco para mantener)</label>
+          <input type="password" id="contrasenaUsuario" name="contrasena" placeholder="Contraseña segura">
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Guardar usuario</button>
+          <button type="reset" class="btn-secundario">Limpiar</button>
+        </div>
+        <div class="mensaje-form"></div>
+      </form>
+    </section>
+
+    <section class="seccion-informacion" id="reportesCoordinador">
+      <h2>Generación de reportes</h2>
+      <div class="tarjeta-info">
+        <p>Exporta información en formato CSV para documentar indicadores de uso, préstamos aprobados y devoluciones.</p>
+        <div class="reportes-acciones">
+          <button class="btn-accion" data-reporte="uso">Reporte de uso del sistema</button>
+          <button class="btn-accion" data-reporte="prestamos">Reporte de préstamos aprobados</button>
+          <button class="btn-accion" data-reporte="devoluciones">Reporte de devoluciones / rechazos</button>
+        </div>
+        <div class="mensaje-form" id="mensajeReportes"></div>
       </div>
     </section>
   </main>

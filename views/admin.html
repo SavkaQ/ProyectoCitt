@@ -16,7 +16,9 @@
       <a href="./home.html">Inicio</a>
       <a href="./inventario.html">Inventario</a>
       <a href="./reservas.html">Reservas</a>
-      <a href="./coordinador.html" data-requiere="coordinador,administrador">Coordinador</a>
+      <a href="./configuracion.html" data-requiere="estudiante,docente,ayudante,coordinador,director,administrador">Configuración</a>
+      <a href="./coordinador.html" data-requiere="coordinador,administrador">Administración</a>
+      <a href="./director.html" data-requiere="director">Director</a>
       <a href="./admin.html" class="activo" data-requiere="administrador">Administrador</a>
     </nav>
     <div class="acciones-header">
@@ -55,11 +57,13 @@
               <th>Correo</th>
               <th>RUT</th>
               <th>Rol</th>
+              <th>Matrícula</th>
+              <th>Estado matrícula</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="cuerpoUsuarios">
-            <tr><td colspan="5">Sin usuarios registrados.</td></tr>
+            <tr><td colspan="7">Sin usuarios registrados.</td></tr>
           </tbody>
         </table>
       </div>
@@ -87,9 +91,34 @@
             <label for="rolUsuario">Rol</label>
             <select id="rolUsuario" name="rol" required>
               <option value="estudiante">Estudiante</option>
+              <option value="ayudante">Ayudante</option>
+              <option value="docente">Docente</option>
               <option value="coordinador">Coordinador</option>
+              <option value="director">Director</option>
               <option value="administrador">Administrador</option>
             </select>
+          </div>
+        </div>
+        <div class="fila-formulario">
+          <div class="form-grupo-inline">
+            <label for="matriculaUsuario">Matrícula</label>
+            <input type="text" id="matriculaUsuario" name="matricula" placeholder="20241234">
+          </div>
+          <div class="form-grupo-inline">
+            <label for="telefonoUsuario">Teléfono</label>
+            <input type="tel" id="telefonoUsuario" name="telefono" placeholder="+56 9 1234 5678">
+          </div>
+          <div class="form-grupo-inline">
+            <label class="checkbox" for="matriculaActivaUsuario">
+              <input type="checkbox" id="matriculaActivaUsuario" name="matriculaActiva" value="si">
+              Matrícula activa
+            </label>
+          </div>
+          <div class="form-grupo-inline">
+            <label class="checkbox" for="notificacionesUsuario">
+              <input type="checkbox" id="notificacionesUsuario" name="notificaciones" value="si" checked>
+              Recibir notificaciones
+            </label>
           </div>
         </div>
         <div class="form-grupo">
